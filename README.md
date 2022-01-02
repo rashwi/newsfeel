@@ -32,9 +32,11 @@ python3 is recommended for the usage of this software. In addition, the followin
 2. Install google cloud packages for your operating system
    * Install packages using a package manager appropriate for your distribution.
      * Note that the google cloud packages will require you to add additional repositories to your package manager repo list. For more detail, see the google cloud documentation at https://cloud.google.com/python/docs/setup
+3. Install python packages necessary
+   * All python dependencies can be installed with pip
 
-## Infrastructure for deployment
-Code to deploy the infrastructure necessary to run this project is available as a separate project at https://github.com/rashwi/timely-iac
+## Infrastructure code for deployment
+Code to deploy the infrastructure necessary to run this project using vagrant and ansible is available as a separate project at https://github.com/rashwi/timely-iac
 
 
 
