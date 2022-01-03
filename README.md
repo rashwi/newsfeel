@@ -1,17 +1,37 @@
-# Timely
-Timely is a simple data scraping tool designed to pull data from the new york times streaming API and conduct sentiment analysis on select articles.
+# Newsfeel
+Newsfeel is a simple data scraping tool designed to pull data from the new york times streaming API and conduct sentiment analysis on select articles.
 
 
 ## Requirements
 
-### NYTimes API Key
-The main function (timely.py) will look for a valid API Key in 'times-api.json' located at the same level as the main function. the json file should be formatted as follows:
+### Required environment variables
+This module takes advantage of multiple APIs that require authentication. As a result, the following API secrets are expected to be in the environment.
+Please note that the variables are case sensitive
 
+### NYTimes API Key
+The NYTimes API should be stored in the environment variable `NYTIMES_API_KEY`. Set the variable as shown here before running the script:
+
+```bash
+export NYTIMES_API_KEY="YOUR_KEY_HERE"
 ```
-{
-    "api-key" : "Your API Key"
-}
+You can sign up for an API key at [developer.nytimes.com](https://wwww.developer.nytimes.com)
+
+#### GCP IAM file
+The main function will also require gcp authentication credentials. Follow the directions provided at https://cloud.google.com/iam/docs/creating-managing-service-account-keys
+
+The path to the resulting *iam.json file should be stored in the environment variable `GOOGLE_APPLICATION_CREDENTIALS` :
+```bash
+export GOOGLE_APPLICATION_CREDENTIALS="path/to/iam-file.json"
 ```
+
+#### Bing API Key
+You will need an Azure resource setup to use the bing search API. See directions provided at [docs.microsoft.com](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-news-search/python) to get instructions on how to setup a new resource.
+
+Once your resource is setup, you can see your keys by going to your resource management page in the Azure dashboard and clicking on "Manage Keys". Assign the value of "key1" to the environment variable "BING_API_KEY":
+```bash
+export BING_API_KEY="YOUR_KEY_HERE"
+```
+
 
 ### Additional Packages
 The following packages are required:
@@ -24,7 +44,6 @@ python3 is recommended for the usage of this software. In addition, the followin
 * google-cloud-storage
 * google-cloud-language
 * pandas
-* tqdm
 
 
 ## Setup
@@ -35,8 +54,9 @@ python3 is recommended for the usage of this software. In addition, the followin
 3. Install python packages necessary
    * All python dependencies can be installed with pip
 
-## Infrastructure code for deployment
-Code to deploy the infrastructure necessary to run this project using vagrant and ansible is available as a separate project at https://github.com/rashwi/timely-iac
+
+## Running 
+Use `main.py` as an example of how to use the Newsfeel package
 
 
 

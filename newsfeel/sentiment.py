@@ -3,8 +3,9 @@ import os
 from typing import Tuple
 from google.cloud import language_v1
 
-# Setup OCP IAM environmental var
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = os.path.join('iam', 'timely-gcp-iam.json')
+# Check for GCP IAM environmental var
+if not os.path.isfile(os.environ['GOOGLE_APPLICATION_CREDENTIALS']):
+    raise FileNotFoundError(f"Expected to have a valid file stored in the environment variable 'GOOGLE_APPLICATION_CREDENTIALS'. gcp will not function without it. Cannot continue.")
 
 def evaluate_sentiment(text_to_analyze: str) -> Tuple[float, float]:
     """Wrapper for calling Google Cloud Platform Language Service Client
